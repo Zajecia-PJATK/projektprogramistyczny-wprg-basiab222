@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="utf-8">
-    <title>Ustawienia</title>
+    <title>Menu</title>
     <style>
         ul {
             list-style-type: none;
@@ -34,8 +34,8 @@
 </head>
 <body>
 <ul>
-    <li><a class="active" href="grafik.php">Grafik</a></li>
-    <li><a href="menu.php">Menu</a></li>
+    <li><a href="grafik.php">Grafik</a></li>
+    <li><a class="active" href="menu.php">Menu</a></li>
     <li><a href="oferty_specjalne.php">Ofert specjalne</a></li>
     <li><a href="pracownicy.php">Pracownicy</a></li>
     <li><a href="rezerwacje.php">Rezerwacje</a></li>
