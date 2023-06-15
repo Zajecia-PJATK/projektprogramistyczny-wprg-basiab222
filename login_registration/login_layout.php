@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -23,10 +27,9 @@
 <?php
 require_once "../db_connection.php";
 require_once "../test_input.php";
-session_start();
 
 if (isset($_POST['login'])) {
-    if (isset($_POST['email']) && isset($_POST['password']) &&
+    if (!(empty($_POST['email']) && empty($_POST['password'])) &&
         filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 
         $email = test_input($_POST['email']);
@@ -42,21 +45,23 @@ if (isset($_POST['login'])) {
 
         if ($resultCustomer->num_rows > 0) {
             $_SESSION['email'] = $email;
-            header("Location: ../employee_app/menu_layout.php");
+            header("Location: ../customer_app/menu_layoutC.php");
             exit();
         } else if ($resultEmployee->num_rows > 0) {
-            header("Location: ../employee_app/menu_layout.php");
+            header("Location: ../employee_app/menu_layoutE.php");
             exit();
         } else {
-            echo '<script>
+            echo '<script src="popup.js"></script>
+    <script>
         window.addEventListener("DOMContentLoaded", function() {
-            displayPopup("Zły adres e-mail lub hasło");
+            displayPopup("Zły adres e-mail lub hasło"); 
         });
     </script>';
         }
         $conn->close();
     } else{
-        echo '<script>
+        echo '<script src="popup.js"></script>
+    <script>
         window.addEventListener("DOMContentLoaded", function() {
             displayPopup("Podaj poprawnie wszystkie dane!"); 
         });
