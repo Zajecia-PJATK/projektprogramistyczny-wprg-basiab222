@@ -44,7 +44,7 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #f2f2f2;
-    color: cornflowerblue;
+    color: darkred;
     padding: 10px 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
