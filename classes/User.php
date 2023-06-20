@@ -1,16 +1,15 @@
 <?php
 
 abstract class User{
-    static int $counter = 0;
     private int $id;
     private string $name;
     private string $surname;
     private string $email;
     private string $password;
 
-    public function __construct(string $name, string $surname, string $email, string $password)
+    public function __construct(int $id, string $name, string $surname, string $email, string $password)
     {
-        $this->id = self::$counter;
+        $this->id = $id;
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;

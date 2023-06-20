@@ -1,7 +1,6 @@
 <?php
 
 class Schedule{
-    static int $counter = 0;
     private int $id;
     private DateTime $dateTime;
     private array $employees;
@@ -10,14 +9,6 @@ class Schedule{
         $this->id = $id;
         $this->dateTime = $dateTime;
         $this->employees = $employees;
-    }
-
-    public static function getCounter(): int {
-        return self::$counter;
-    }
-
-    public static function setCounter(int $counter): void {
-        self::$counter = $counter;
     }
 
     public function getId(): int {
