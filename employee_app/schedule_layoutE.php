@@ -35,7 +35,10 @@ $daysOfWeek = array('Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 
 
 if(isset($_GET['date'])) {
     $date = $_GET['date'];
-    $today = new DateTime($date);
+    try {
+        $today = new DateTime($date);
+    } catch (Exception $e) {
+    }
 } else {
     $today = new DateTime();
 }
@@ -43,11 +46,12 @@ if(isset($_GET['date'])) {
 $today->setISODate($today->format('o'), $today->format('W'));
 
 $startDate = $today->format('Y-m-d');
+
 $endDate = $today->modify('+6 days')->format('Y-m-d');
 
 $monday = $today->format('Y-m-d');
 
-$html = '<h2>' . $today->format('d/m/Y') . " - " .$today->format('d/m/Y').'</h2>';
+$html = '<h2>' . $startDate . " - " .$endDate.'</h2>';
 
 $html .= '<a class = "button" href="?date=' . date('Y-m-d', strtotime($monday . ' - 7 days')) . '"> < </a> ';
 $html .= '<a class = "button" href="?date=' . date('Y-m-d', strtotime($monday . ' + 7 days')) . '"> > </a>';
@@ -61,27 +65,29 @@ foreach ($daysOfWeek as $day) {
 
 $html .= '</tr>';
 
-$timeSlots = array('9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00');
+$timeSlots = array('08:00','09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00');
 $daysOfWeekEN = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
 
 $events = array();
 
 try {
     $weekSchedules = getWeekSchedule();
-    print_r($weekSchedules);
+
     foreach ($weekSchedules as $schedule) {
         $scheduleDate = date('Y-m-d', strtotime($schedule->getDateTime()));
+
+
         $day = date('l', strtotime($schedule->getDateTime()));
 
         if ($scheduleDate >= $startDate && $scheduleDate <= $endDate) {
             foreach ($schedule->getEmployees() as $employee) {
-                $event = array('employee' => $employee, 'time' => date('h:i', strtotime($schedule->dateTime)));
+                $event = array('employee' => $employee, 'time' => date('H:i', strtotime($schedule->getDateTime())));
                 $events[$day][] = $event;
             }
         }
     }
 } catch (mysqli_sql_exception $mysqli_sql_exception){
-    echo "blad";
+    echo $mysqli_sql_exception->getMessage();
 }
 
 
@@ -95,7 +101,7 @@ foreach ($timeSlots as $timeSlot) {
         if (isset($events[$day])) {
             foreach ($events[$day] as $event) {
                 if ($event['time'] == $timeSlot) {
-                    $html .= $event['employee'] . '<br>';
+                    $html .= $event['employee']->getName()." ".$event['employee']->getSurname() . '<br>';
                 }
             }
         }

@@ -2,10 +2,10 @@
 
 class Schedule{
     private int $id;
-    private DateTime $dateTime;
+    private string $dateTime;
     private array $employees;
 
-    public function __construct(int $id, DateTime $dateTime, array $employees) {
+    public function __construct(int $id, string $dateTime, array $employees) {
         $this->id = $id;
         $this->dateTime = $dateTime;
         $this->employees = $employees;
@@ -19,11 +19,11 @@ class Schedule{
         $this->id = $id;
     }
 
-    public function getDateTime(): DateTime {
+    public function getDateTime(): string {
         return $this->dateTime;
     }
 
-    public function setDateTime(DateTime $dateTime): void {
+    public function setDateTime(string $dateTime): void {
         $this->dateTime = $dateTime;
     }
 

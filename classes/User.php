@@ -14,7 +14,6 @@ abstract class User{
         $this->surname = $surname;
         $this->email = $email;
         $this->password = $password;
-        self::$counter++;
     }
     public function getId(): int
     {
