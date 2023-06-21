@@ -65,18 +65,25 @@ $timeSlots = array('9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00',
 $daysOfWeekEN = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
 
 $events = array();
-$weekSchedules = getWeekSchedule();
-foreach ($weekSchedules as $schedule) {
-    $scheduleDate = date('Y-m-d', strtotime($schedule->getDateTime()));
-    $day = date('l', strtotime($schedule->getDateTime()));
 
-    if ($scheduleDate >= $startDate && $scheduleDate <= $endDate) {
-        foreach ($schedule->getEmployees() as $employee) {
-            $event = array('employee' => $employee, 'time' => date('h:i', strtotime($schedule->dateTime)));
-            $events[$day][] = $event;
+try {
+    $weekSchedules = getWeekSchedule();
+    print_r($weekSchedules);
+    foreach ($weekSchedules as $schedule) {
+        $scheduleDate = date('Y-m-d', strtotime($schedule->getDateTime()));
+        $day = date('l', strtotime($schedule->getDateTime()));
+
+        if ($scheduleDate >= $startDate && $scheduleDate <= $endDate) {
+            foreach ($schedule->getEmployees() as $employee) {
+                $event = array('employee' => $employee, 'time' => date('h:i', strtotime($schedule->dateTime)));
+                $events[$day][] = $event;
+            }
         }
     }
+} catch (mysqli_sql_exception $mysqli_sql_exception){
+    echo "blad";
 }
+
 
 foreach ($timeSlots as $timeSlot) {
     $html .= '<tr>';
