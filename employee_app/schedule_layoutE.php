@@ -53,6 +53,13 @@ $monday = $today->format('Y-m-d');
 
 $html = '<h2>' . $startDate . " - " .$endDate.'</h2>';
 
+
+$html .= '<div class="calendar-actions">';
+$html .= '<a class="button2" href="add_schedule.php">Dodaj grafik</a>';
+$html .= '<a class="button2" href="edit_schedule.php?date=' . $startDate . '">Edytuj grafik</a>';
+$html .= '</div>';
+
+
 $html .= '<a class = "button" href="?date=' . date('Y-m-d', strtotime($monday . ' - 7 days')) . '"> < </a> ';
 $html .= '<a class = "button" href="?date=' . date('Y-m-d', strtotime($monday . ' + 7 days')) . '"> > </a>';
 
@@ -111,8 +118,8 @@ foreach ($timeSlots as $timeSlot) {
 
     $html .= '</tr>';
 }
-
 $html .= '</table>';
+
 
 echo $html;
 ?>

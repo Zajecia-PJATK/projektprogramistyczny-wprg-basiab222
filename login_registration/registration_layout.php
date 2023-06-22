@@ -8,7 +8,7 @@ session_start();
     <meta charset="utf-8">
     <title>Rejestracja</title>
     <link rel="stylesheet" href="login_registration.css">
-    <script src="popup.js"></script>
+    <script src="../popup.js"></script>
 </head>
 <body>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -44,7 +44,7 @@ if (isset($_POST['register'])) {
         }
 
         if ($checkResult->num_rows > 0) {
-            echo '<script src="popup.js"></script>
+            echo '<script src="../popup.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", function() {
             displayPopup("E-mail adres został już użyty");
@@ -54,14 +54,13 @@ if (isset($_POST['register'])) {
             $insertQuery = "INSERT INTO Klient (Imie, Nazwisko, Email, Haslo) VALUES ('$name','$surname','$email','$password')";
 
             if ($conn->query($insertQuery) === true) {
-                echo '<script src="popup.js"></script>
+                echo '<script src="../popup.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", function() {
             displayPopup("Konto zostało utworzone. Przekierowuje do strony logowania.");
         });
     </script>';
                 $_SESSION['email'] = $email;
-                sleep(3);
                 header("Location: login_layout.php");
                 exit();
             } else {
@@ -70,7 +69,7 @@ if (isset($_POST['register'])) {
         }
         $conn->close();
     } else{
-        echo '<script src="popup.js"></script>
+        echo '<script src="../popup.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", function() {
             displayPopup("Podaj poprawnie wszystkie dane!"); 

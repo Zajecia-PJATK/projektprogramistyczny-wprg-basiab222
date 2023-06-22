@@ -51,7 +51,7 @@ if (isset($_POST['login'])) {
             header("Location: ../employee_app/menu_layoutE.php");
             exit();
         } else {
-            echo '<script src="popup.js"></script>
+            echo '<script src="../popup.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", function() {
             displayPopup("Zły adres e-mail lub hasło"); 
@@ -60,7 +60,7 @@ if (isset($_POST['login'])) {
         }
         $conn->close();
     } else{
-        echo '<script src="popup.js"></script>
+        echo '<script src="../popup.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", function() {
             displayPopup("Podaj poprawnie wszystkie dane!"); 

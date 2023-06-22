@@ -1,13 +1,13 @@
 <?php
-//$dbHost = "szuflandia.pjwstk.edu.pl";
-//$dbUser = "s27263";
-//$dbPass = "Bar.Bara";
-//$dbName = "s27263";
+$dbHost = "szuflandia.pjwstk.edu.pl";
+$dbUser = "s27263";
+$dbPass = "Bar.Bara";
+$dbName = "s27263";
 
-$dbHost = "127.0.0.1";
-$dbUser = "root";
-$dbPass = "";
-$dbName = "Projekt_wprg";
+//$dbHost = "127.0.0.1";
+//$dbUser = "root";
+//$dbPass = "";
+//$dbName = "Projekt_wprg";
 
 $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 

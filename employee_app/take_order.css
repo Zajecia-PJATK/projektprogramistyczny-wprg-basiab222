@@ -32,3 +32,7 @@ input[type=submit]{
 section{
     margin-left: 250px;
 }
+
+.list{
+    color: black;
+}

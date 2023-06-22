@@ -36,24 +36,7 @@ function calculateTotal() {
 
 function addRow() {
     var table = document.getElementById('orderTable');
-    var newRow = table.insertRow(-1);
-
-    var firstRowCells = table.rows[1].cells;
-    for (var i = 0; i < firstRowCells.length; i++) {
-        var newCell = newRow.insertCell(i);
-        var originalCell = firstRowCells[i];
-
-
-        var clonedContent = originalCell.cloneNode(true);
-
-
-        if (clonedContent.querySelector('input')) {
-            clonedContent.querySelector('input').value = '';
-        }
-
-
-        newCell.appendChild(clonedContent);
-    }
+    var newRow = table.rows[1].cloneNode(true);
+    table.appendChild(newRow);
 }
-
 
