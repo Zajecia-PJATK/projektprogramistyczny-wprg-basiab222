@@ -1,0 +1,36 @@
+h2 {
+    margin-bottom: 10px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="datetime-local"],
+select {
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    padding: 8px 12px;
+    background-color: cornflowerblue;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+    color: white;
+}
+
+.message {
+    margin-bottom: 20px;
+    font-weight: bold;
+}

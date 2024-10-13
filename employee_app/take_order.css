@@ -1,0 +1,38 @@
+table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #555;
+}
+
+th {
+    background-color: #f1f1f1;
+}
+
+h2{
+    color: black;
+}
+
+input[type=submit]{
+    margin-top: 20px;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    color: #333;
+    border: 1px solid #555;
+}
+
+
+section{
+    margin-left: 250px;
+}
+
+.list{
+    color: black;
+}
