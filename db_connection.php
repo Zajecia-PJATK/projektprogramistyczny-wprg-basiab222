@@ -1,7 +1,7 @@
 <?php
 $dbHost = "szuflandia.pjwstk.edu.pl";
-$dbUser = "s27263";
-$dbPass = "Bar.Bara";
+$dbUser = "";
+$dbPass = "";
 $dbName = "s27263";
 
 //$dbHost = "127.0.0.1";
